@@ -77,11 +77,12 @@
 
         .custom-bg {
             background-color: #2ec1ac;
-            ;
+            border: 1px solid #2ec1ac;
         }
 
         .custom-bg:hover {
             background-color: #279e94;
+            border-color: #279e94;
         }
 
         .availability-form {
@@ -320,8 +321,286 @@
         </div>
     </div>
     <!--Our rooms-->
+    <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">Our Rooms</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 my-3">
+                <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
+                    <img src="{{ asset('images/room/1.jpg') }}" class="card-img-top">
+                    <div class="card-body">
+                        <h5>Family Room with Balcony</h5>
+                        <h6 class="mb-4">Price: $100/night</h6>
+                        <div class="features mb-4">
+                            <h6 class="mb-1">Features</h6>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">1 Room</span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">2 Beds</span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">1 Bathroom</span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">1 Balcony</span>
 
-    <br><br><br>
+                        </div>
+                        <div class="facilities mb-4">
+                            <h6 class="mb-4">Facilities</h6>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">Wifi</span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">Television</span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">AC</span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">Room heater</span>
+                        </div>
+                        <div class="rating mb-4">
+                            <h6 class="mb-1">Rating</h6>
+                            <span class="badge rounded-pill bg-light">
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <i class="bi bi-star-fill text-warning"></i>
+                            </span>
+                        </div>
+                        <div class="d-flex justify-content-evenly mb-2">
+                            <a href="#" class="btn btn-sm text-white shadow-none custom-bg">Book Now</a>
+
+                            <a href="#" class="btn btn-sm btn-outline-dark shadow-none">More Details</a>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 my-3">
+                <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
+                    <img src="{{ asset('images/room/2.jpg') }}" class="card-img-top">
+                    <div class="card-body">
+                        <h5>Deluxe Double Room</h5>
+                        <h6 class="mb-4">Price: $150/night</h6>
+                        <div class="features mb-4">
+                            <h6 class="mb-1">Features</h6>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">2 Room</span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">1 Beds</span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">1 Bathroom</span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">1 Balcony</span>
+
+                        </div>
+                        <div class="facilities mb-4">
+                            <h6 class="mb-4">Facilities</h6>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">Wifi</span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">Television</span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">AC</span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">Room heater</span>
+                        </div>
+                        <div class="rating mb-4">
+                            <h6 class="mb-1">Rating</h6>
+                            <span class="badge rounded-pill bg-light">
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <i class="bi bi-star-fill text-warning"></i>
+
+                            </span>
+                        </div>
+                        <div class="d-flex justify-content-evenly mb-2">
+                            <a href="#" class="btn btn-sm text-white shadow-none custom-bg">Book Now</a>
+
+                            <a href="#" class="btn btn-sm btn-outline-dark shadow-none">More Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 my-3">
+                <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
+                    <img src="{{ asset('images/room/3.jpg') }}" class="card-img-top">
+                    <div class="card-body">
+                        <h5>Premium Double Room with balcony</h5>
+                        <h6 class="mb-4">Price: $500/night</h6>
+                        <div class="features mb-4">
+                            <h6 class="mb-1">Features</h6>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">2 Room</span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">1 Beds</span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">1 Bathroom</span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">1 Balcony</span>
+
+                        </div>
+                        <div class="facilities mb-4">
+                            <h6 class="mb-4">Facilities</h6>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">Wifi</span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">Television</span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">AC</span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">Room heater</span>
+                        </div>
+                        <div class="rating mb-4">
+                            <h6 class="mb-1">Rating</h6>
+                            <span class="badge rounded-pill bg-light">
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <i class="bi bi-star-fill text-warning"></i>
+                            </span>
+                        </div>
+                        <div class="d-flex justify-content-evenly mb-2">
+                            <a href="#" class="btn btn-sm text-white shadow-none custom-bg">Book Now</a>
+
+                            <a href="#" class="btn btn-sm btn-outline-dark shadow-none">More Details</a>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12 text-center mt-5">
+                <a href="#" class="btn btn-sm btn-outline-dark rounded-0 fw-bold shadow-none">More Rooms</a>
+            </div>
+        </div>
+
+    </div>
+    <!--Our facilities-->
+    <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">Our Facilities</h2>
+    <div class="container ">
+        <div class="row justify-content-evenly px-lg-0 px-md-0 px-5">
+            <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
+                <span><i class="bi bi-wifi"></i></span>
+                <div class="card-body">
+                    <h5 class="mt-3">Wifi</h5>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
+                <span><i class="bi bi-fork-knife"></i></span>
+                <div class="card-body">
+                    <h5 class="mt-3">Restaurant</h5>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
+                <span><i class="bi bi-cart"></i></span>
+                <div class="card-body">
+                    <h5 class="mt-3">Mini mart</h5>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
+                <span><i class="bi bi-car-front"></i></span>
+                <div class="card-body">
+                    <h5 class="mt-3">Car parking</h5>
+                </div>
+            </div>
+            <div class="col-lg-12 text-center mt-5">
+                <a href="#" class="btn btn-sm btn-outline-dark rounded-0 fw-bold shadow-none">More Facilities</a>
+            </div>
+        </div>
+    </div>
+    <!-- Special Offers -->
+    <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">Special Offers</h2>
+    <div class="container justify-content-evenly px-lg-0 px-md-0 px-5">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card border-0 shadow rounded">
+                    <img src="{{ asset('images/special_offers/1.jpg') }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Festive Season</h5>
+                        <p class="card-text">Enjoy up to 30% off on selected rooms.</p>
+                        <a href="#" class="btn btn-sm btn-outline-dark rounded-0 shadow-none">Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card border-0 shadow rounded">
+                    <img src="{{ asset('images/special_offers/2.jpg') }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Halfboard Package</h5>
+                        <p class="card-text">Special weekend rates for couples.</p>
+                        <a href="#" class="btn btn-sm btn-outline-dark rounded-0 shadow-none">Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card border-0 shadow rounded">
+                    <img src="{{ asset('images/special_offers/3.jpg') }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Advance Purchase</h5>
+                        <p class="card-text">Family-friendly deals with kids stay free.</p>
+                        <a href="#" class="btn btn-sm btn-outline-dark rounded-0 shadow-none">Details</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- Photo Gallery -->
+    <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">Photo Gallery</h2>
+    <div class="container">
+        <div class="swiper swiper-gallery">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="{{ asset('images/gallery/1.jpg') }}" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="{{ asset('images/gallery/2.jpg') }}" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="{{ asset('images/gallery/3.jpg') }}" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="{{ asset('images/gallery/4.jpg') }}" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="{{ asset('images/gallery/5.jpg') }}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Map -->
+    <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">Find Us</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-8 p-4 mb-3 bg-white rounded shadow">
+                <iframe class="w-100 rounded" height="450" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59611.980357559245!2d105.72518385920104!3d20.962601792318065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313452efff394ce3%3A0x391a39d4325be464!2zVHLGsOG7nW5nIMSQ4bqhaSBI4buNYyBQaGVuaWthYQ!5e0!3m2!1svi!2s!4v1769099849700!5m2!1svi!2s" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div class="col-lg-4 col-md-4">
+                <div class="p-4 mb-3 bg-white rounded shadow">
+                    <h5>Address</h5>
+                    <p>Phenikaa University, Yen Nghia, Ha Dong, Ha Noi</p>
+                    <h5>Call us</h5>
+                    <a href="tel: +84123456789"> <i class="bi bi-telephone-fill"></i> +84 123 456 789</a>
+                    <h5>Email</h5>
+                    <a href="mailto:info@example.com"><i class="bi bi-envelope-at-fill"></i> info@example.com</a>
+                </div>
+
+                <div class="p-4 mb-3 bg-white rounded shadow">
+                    <h5>Follow Us</h5>
+                    <span class="badge bg-light text-dark fs-6 p-2"><a href="#" class="d-inline-block mb-3"><i class="bi bi-facebook me-1"></i> Facebook</a></span>
+                    <span class="badge bg-light text-dark fs-6 p-2"><a href="#" class="d-inline-block mb-3"><i class="bi bi-instagram me-1"></i> Instagram</a></span>
+                    <span class="badge bg-light text-dark fs-6 p-2"><a href="#" class="d-inline-block mb-3"><i class="bi bi-twitter me-1"></i> Twitter</a></span>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <!-- ======= FOOTER ======= -->
+    <div class="container-fluid bg-white mt-5">
+        <div class="row">
+            <div class="col-lg-4 p-4">
+                <h3 class="h-font fw-bold fs-3 mb-2">Sunset Oasis</h3>
+                <p>Experience luxury living at Sunset Oasis, where comfort meets elegance in our exquisite apartments.</p>
+            </div>
+            <div class="col-lg-4 p-4">
+                <h5 class="mb-3">Links</h5>
+                <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none">Home</a><br>
+                <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none">About Us</a><br>
+                <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none">Our Rooms</a><br>
+                <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none">Facilities</a><br>
+                <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none">Contact Us</a>
+            </div>
+            <div class="col-lg-4 p-4">
+                <h5 class="mb-3">Follow Us</h5>
+                <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none"><i class="bi bi-facebook"></i> Facebook</a><br>
+                <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none"><i class="bi bi-instagram"></i> Instagram</a><br>
+                <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none"><i class="bi bi-twitter "></i> Twitter</a><br>
+            </div>
+        </div>
+    </div>
+    <h6 class="text-center bg-dark text-white p-3 m-0">© 2024 Sunset Oasis. All rights reserved.</h6>
+
+
+
     <!-- ======= SCRIPTS ======= -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
@@ -343,6 +622,24 @@
                 nextEl: ".swiper-button-next",
                 prevEl: ".swiper-button-prev",
             },
+        });
+        var swiper = new Swiper(".swiper-gallery", {
+            effect: "coverflow",
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: "auto",
+            coverflowEffect: {
+                rotate: 50,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: true,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+
+            },
+
         });
     </script>
 
