@@ -52,18 +52,7 @@ Sunset Oasis is an online hotel booking website that allows users to search, boo
 ## 🧱 System Architecture
 ```bash
 Sunset Oasis
-│
-├── frontend
-│ ├── HTML
-│ ├── CSS
-│ └── JavaScript
-│
-├── backend
-│ ├── PHP
-│ └── MySQL
-│
-└── database
-└── MySQL
+
 ```
 ---
 
