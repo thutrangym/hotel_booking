@@ -100,7 +100,6 @@
                 <h3 class="mb-3">Our Special Offers</h3>
                 <hr class="mx-auto" style="width: 150px; height: 3px; background-color: #000;">
             </div>
-
             {{-- Offer Item --}}
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="card border-0 shadow">
