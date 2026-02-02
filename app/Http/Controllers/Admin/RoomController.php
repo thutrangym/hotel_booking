@@ -37,6 +37,10 @@ class RoomController extends Controller
             'capacity'    => 'nullable|integer',
             'description' => 'nullable|string',
 
+            'total_rooms'     => 'required|integer|min:0',
+            'available_rooms' => 'required|integer|min:0',
+            'status'          => 'required|in:available,hidden',
+
             'facilities'   => 'nullable|array',
             'facilities.*' => 'exists:facilities,id',
 
@@ -44,7 +48,13 @@ class RoomController extends Controller
             'images.*' => 'image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
 
-        // Create room
+        if ($data['available_rooms'] > $data['total_rooms']) {
+            return back()
+                ->withErrors(['available_rooms' => 'Available rooms cannot exceed total rooms'])
+                ->withInput();
+        }
+
+        // Create room (ensure inventory fields are saved)
         $room = Room::create($data);
 
         // Sync facilities
@@ -137,9 +147,10 @@ class RoomController extends Controller
     // DELETE
     public function destroy(Room $room)
     {
-        // Delete images from storage
+        // Delete images from storage and remove image records
         foreach ($room->images as $img) {
-            Storage::disk('public')->delete($img->image);
+            Storage::disk('public')->delete($img->image_path);
+            $img->delete();
         }
 
         $room->delete();

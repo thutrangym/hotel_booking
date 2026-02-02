@@ -10,7 +10,6 @@
                 <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none">About Us</a><br>
                 <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none">Our Rooms</a><br>
                 <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none">Facilities</a><br>
-                <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none">Contact Us</a>
             </div>
             <div class="col-lg-4 p-4">
                 <h5 class="mb-3">Follow Us</h5>

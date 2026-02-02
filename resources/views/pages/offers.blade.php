@@ -52,46 +52,40 @@
     <div class="row">
         <div class="col-lg-12 bg-white shadow p-4 rounded mt-4">
             <h5 class="mb-4">Check Booking Availability</h5>
-
-            <form>
+            <form method="GET" action="{{ route('rooms.index') }}">
                 <div class="row align-items-end">
                     <div class="col-lg-3 mb-3">
                         <label class="form-label">Check-in</label>
-                        <input type="date" class="form-control shadow-none">
+                        <input type="date" name="check_in" class="form-control shadow-none">
                     </div>
-
                     <div class="col-lg-3 mb-3">
                         <label class="form-label">Check-out</label>
-                        <input type="date" class="form-control shadow-none">
+                        <input type="date" name="check_out" class="form-control shadow-none">
                     </div>
-
                     <div class="col-lg-3 mb-3">
                         <label class="form-label">Adults</label>
-                        <select class="form-select shadow-none">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
+                        <select name="adults" class="form-select shadow-none">
+                            @for($i=1;$i<=4;$i++)
+                                <option>{{ $i }}</option>
+                                @endfor
                         </select>
                     </div>
-
                     <div class="col-lg-2 mb-3">
                         <label class="form-label">Children</label>
-                        <select class="form-select shadow-none">
-                            <option>0</option>
-                            <option>1</option>
-                            <option>2</option>
+                        <select name="children" class="form-select shadow-none">
+                            @for($i=0;$i<=3;$i++)
+                                <option>{{ $i }}</option>
+                                @endfor
                         </select>
                     </div>
-
-                    <div class="col-lg-1 mb-lg-3 d-flex align-items-end">
-                        <button type="submit" class="btn text-white shadow-none custom-bg">Check</button>
+                    <div class="col-lg-1 mb-lg-3">
+                        <button class="btn text-white shadow-none custom-bg">Check</button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
 </div>
-
 {{-- ================= OFFERS ================= --}}
 <div class="offers mt-5 mb-5">
     <div class="container">
@@ -103,10 +97,30 @@
             {{-- Offer Item --}}
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="card border-0 shadow">
-                    <img src="{{ asset('images/offers/offer1.jpg') }}" class="card-img-top" alt="Offer 1">
+                    <img src="{{ asset('images/special_offers/1.jpg') }}" class="card-img-top" alt="Offer 1">
                     <div class="card-body">
                         <h5 class="card-title">Romantic Getaway Package</h5>
                         <p class="card-text">Enjoy a romantic stay with special amenities including a couples massage, candlelight dinner, and champagne.</p>
+                        <a href="#" class="btn text-white shadow-none custom-bg">Book Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card border-0 shadow">
+                    <img src="{{ asset('images/special_offers/2.jpg') }}" class="card-img-top" alt="Offer 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Family Fun Package</h5>
+                        <p class="card-text">Perfect for families with kids, this package includes kids' meals, family activities, and a special welcome gift.</p>
+                        <a href="#" class="btn text-white shadow-none custom-bg">Book Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card border-0 shadow">
+                    <img src="{{ asset('images/special_offers/3.jpg') }}" class="card-img-top" alt="Offer 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Business Travel Package</h5>
+                        <p class="card-text">Ideal for business travelers, this package includes a dedicated workspace, high-speed internet, and breakfast.</p>
                         <a href="#" class="btn text-white shadow-none custom-bg">Book Now</a>
                     </div>
                 </div>

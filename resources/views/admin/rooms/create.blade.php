@@ -114,7 +114,7 @@
                             </div>
                         </div>
 
-                        <button class="btn btn-dark w-100 py-3 rounded-4 fw-bold shadow-lg mt-2 transition-all hover-scale">
+                        <button type="submit" class="btn btn-dark w-100 py-3 rounded-4 fw-bold shadow-lg mt-2 transition-all hover-scale">
                             Save Room Details
                         </button>
                     </div>

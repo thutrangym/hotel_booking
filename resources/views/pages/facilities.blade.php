@@ -82,6 +82,46 @@
         color: #555;
     }
 
+    .facility-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 24px;
+        justify-items: center;
+    }
+
+    .facility-box {
+        width: 160px;
+        height: 140px;
+        background: #fff;
+        border-radius: 6px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: all .25s ease;
+    }
+
+    .facility-box:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .facility-box img {
+        width: 34px;
+        height: 34px;
+        margin-bottom: 12px;
+    }
+
+    .facility-box span {
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: #333;
+        text-align: center;
+    }
+
+
+
 
     /* MOBILE */
     @media (max-width: 768px) {
@@ -285,48 +325,23 @@
         <h2 class="mb-3">Other Facilities</h2>
         <hr class="w-25 mx-auto">
     </div>
-    <div class="container ">
-        <div class="row justify-content-evenly px-lg-0 px-md-0 px-5">
-            <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
-                <span><i class="bi bi-wifi"></i></span>
-                <div class="card-body">
-                    <h5 class="mt-3">Wifi</h5>
-                </div>
+    <div class="container">
+        <div class="facility-grid">
+            @forelse ($facilities as $facility)
+            <div class="facility-box">
+                @if($facility->icon)
+                <img src="{{ asset('icons/' . $facility->icon) }}" alt="{{ $facility->name }}">
+                @endif
+                <span>{{ $facility->name }}</span>
             </div>
-            <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
-                <span><i class="bi bi-bicycle"></i></span>
-                <div class="card-body">
-                    <h5 class="mt-3">Bicycle rental</h5>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
-                <span><i class="bi bi-cart"></i></span>
-                <div class="card-body">
-                    <h5 class="mt-3">Mini mart</h5>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
-                <span><i class="bi bi-car-front"></i></span>
-                <div class="card-body">
-                    <h5 class="mt-3">Car parking</h5>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
-                <span><i class="bi bi-building"></i></span>
-                <div class="card-body">
-                    <h5 class="mt-3">Fitness center</h5>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
-                <span><i class="bi bi-bus-front-fill"></i></span>
-                <div class="card-body">
-                    <h5 class="mt-3">Bus service</h5>
-                </div>
-            </div>
-
-
+            @empty
+            <p class="text-muted text-center">No facilities available</p>
+            @endforelse
         </div>
+
+
     </div>
+
 </div>
 
 @endsection

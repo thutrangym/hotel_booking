@@ -4,18 +4,17 @@
 <div class="container py-4">
     <div class="card shadow-sm rounded-4 border-0">
         <div class="card-body">
-            <h4 class="fw-black mb-4">Edit User</h4>
+            <h4 class="fw-black mb-4">Create User</h4>
 
-            <form action="{{ route('admin.users.update', $user) }}" method="POST">
+            <form action="{{ route('admin.users.store') }}" method="POST">
                 @csrf
-                @method('PUT')
 
                 {{-- Name --}}
                 <div class="mb-3">
                     <label class="form-label fw-bold">Name</label>
                     <input type="text" name="name"
                         class="form-control @error('name') is-invalid @enderror"
-                        value="{{ old('name', $user->name) }}">
+                        value="{{ old('name') }}">
                     @error('name') <div class="invalid-feedback">{{ $message }}</div> @enderror
                 </div>
 
@@ -24,13 +23,13 @@
                     <label class="form-label fw-bold">Email</label>
                     <input type="email" name="email"
                         class="form-control @error('email') is-invalid @enderror"
-                        value="{{ old('email', $user->email) }}">
+                        value="{{ old('email') }}">
                     @error('email') <div class="invalid-feedback">{{ $message }}</div> @enderror
                 </div>
 
                 {{-- Password --}}
                 <div class="mb-3">
-                    <label class="form-label fw-bold">New Password (optional)</label>
+                    <label class="form-label fw-bold">Password</label>
                     <input type="password" name="password"
                         class="form-control @error('password') is-invalid @enderror">
                     @error('password') <div class="invalid-feedback">{{ $message }}</div> @enderror
@@ -47,8 +46,8 @@
                 <div class="mb-3">
                     <label class="form-label fw-bold">Role</label>
                     <select name="role" class="form-select">
-                        <option value="user" @selected($user->role === 'user')>User</option>
-                        <option value="admin" @selected($user->role === 'admin')>Admin</option>
+                        <option value="user">User</option>
+                        <option value="admin">Admin</option>
                     </select>
                 </div>
 
@@ -56,21 +55,21 @@
                 <div class="mb-3">
                     <label class="form-label fw-bold">Phone</label>
                     <input type="text" name="phone" class="form-control"
-                        value="{{ old('phone', $user->phone) }}">
+                        value="{{ old('phone') }}">
                 </div>
 
                 {{-- Address --}}
                 <div class="mb-3">
                     <label class="form-label fw-bold">Address</label>
                     <input type="text" name="address" class="form-control"
-                        value="{{ old('address', $user->address) }}">
+                        value="{{ old('address') }}">
                 </div>
 
                 {{-- DOB --}}
                 <div class="mb-4">
                     <label class="form-label fw-bold">Date of Birth</label>
                     <input type="date" name="dob" class="form-control"
-                        value="{{ old('dob', $user->dob) }}">
+                        value="{{ old('dob') }}">
                 </div>
 
                 {{-- Actions --}}
@@ -79,7 +78,7 @@
                         Back
                     </a>
                     <button class="btn btn-dark fw-bold px-4">
-                        Update
+                        Create
                     </button>
                 </div>
 

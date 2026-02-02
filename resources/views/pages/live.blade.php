@@ -31,39 +31,34 @@
     <div class="row">
         <div class="col-lg-12 bg-white shadow p-4 rounded mt-4">
             <h5 class="mb-4">Check Booking Availability</h5>
-
-            <form>
+            <form method="GET" action="{{ route('rooms.index') }}">
                 <div class="row align-items-end">
                     <div class="col-lg-3 mb-3">
                         <label class="form-label">Check-in</label>
-                        <input type="date" class="form-control shadow-none">
+                        <input type="date" name="check_in" class="form-control shadow-none">
                     </div>
-
                     <div class="col-lg-3 mb-3">
                         <label class="form-label">Check-out</label>
-                        <input type="date" class="form-control shadow-none">
+                        <input type="date" name="check_out" class="form-control shadow-none">
                     </div>
-
                     <div class="col-lg-3 mb-3">
                         <label class="form-label">Adults</label>
-                        <select class="form-select shadow-none">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
+                        <select name="adults" class="form-select shadow-none">
+                            @for($i=1;$i<=4;$i++)
+                                <option>{{ $i }}</option>
+                                @endfor
                         </select>
                     </div>
-
                     <div class="col-lg-2 mb-3">
                         <label class="form-label">Children</label>
-                        <select class="form-select shadow-none">
-                            <option>0</option>
-                            <option>1</option>
-                            <option>2</option>
+                        <select name="children" class="form-select shadow-none">
+                            @for($i=0;$i<=3;$i++)
+                                <option>{{ $i }}</option>
+                                @endfor
                         </select>
                     </div>
-
-                    <div class="col-lg-1 mb-lg-3 d-flex align-items-end">
-                        <button class="btn text-white custom-bg w-100">Check</button>
+                    <div class="col-lg-1 mb-lg-3">
+                        <button class="btn text-white shadow-none custom-bg">Check</button>
                     </div>
                 </div>
             </form>

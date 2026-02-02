@@ -8,40 +8,20 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active me-2" aria-current="page" href="{{ route('live') }}">Live with us</a>
+                        <a class="nav-link me-2" aria-current="page" href="{{ route('live') }}">Live with us</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle me-2" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Our Rooms
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Four-bedroom apartment</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Three-bedroom Villa</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Two-bedroom apartment</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">One-bedroom apartment</a></li>
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link me-2" aria-current="page" href="{{ route('rooms.index') }}">Our Rooms</a>
                     </li>
+
                     <li class="nav-item">
                         <a class="nav-link me-2" href="{{ route('facilities') }}">Facilities</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link me-2" href="{{ route('offers') }}">Special Offers</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link me-2" href="{{ route('gallery') }}">Photo Gallery</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link me-2" href="{{ route('contact') }}">Contact</a>
-                    </li>
+
+
 
                 </ul>
                 <form class="d-flex">

@@ -1,46 +1,69 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container py-4">
+<div class="container-fluid py-4">
 
-    <h2 class="mb-4 fw-bold">Admin Dashboard</h2>
+    {{-- TOP STATS --}}
+    <div class="row g-4 mb-4">
 
-    {{-- STAT CARDS --}}
-    <div class="row g-3 mb-4">
+        @php
+        $cards = [
+        ['title' => 'Current In House', 'value' => $currentInHouse, 'color' => 'primary', 'pax' => $paxInHouse],
+        ['title' => 'Expected Arrivals', 'value' => $expectedArrivals, 'color' => 'danger', 'pax' => $paxArrivals],
+        ['title' => 'Expected Departures', 'value' => $expectedDepartures, 'color' => 'warning', 'pax' => $paxDepartures],
+        ['title' => 'End Of Day', 'value' => $endOfDay, 'color' => 'secondary', 'pax' => $paxEndOfDay],
+        ];
+        @endphp
+
+        @foreach($cards as $card)
         <div class="col-md-3">
-            <div class="card p-3 shadow-sm">🏨 Rooms: {{ $totalRooms }}</div>
+            <div class="card shadow-sm h-100">
+                <div class="card-body text-center">
+                    <h6 class="text-muted">{{ $card['title'] }}</h6>
+                    <h1 class="text-{{ $card['color'] }}">{{ $card['value'] }}</h1>
+                    <small>Rooms</small>
+                    <hr>
+                    <small>Total Pax: {{ $card['pax'] }}</small>
+                </div>
+            </div>
         </div>
-        <div class="col-md-3">
-            <div class="card p-3 shadow-sm">📅 Today Bookings: {{ $todayBookings }}</div>
-        </div>
-        <div class="col-md-3">
-            <div class="card p-3 shadow-sm">🛏 Available: {{ $availableRooms }}</div>
-        </div>
-        <div class="col-md-3">
-            <div class="card p-3 shadow-sm">👤 Users: {{ $totalUsers }}</div>
-        </div>
+        @endforeach
     </div>
 
-    {{-- LATEST BOOKINGS --}}
-    <div class="card shadow-sm">
-        <div class="card-header fw-semibold">Latest Bookings</div>
-        <div class="card-body">
-            <table class="table table-sm">
-                <tr>
-                    <th>User</th>
-                    <th>Room</th>
-                    <th>Check-in</th>
-                    <th>Status</th>
-                </tr>
-                @foreach($latestBookings as $booking)
-                <tr>
-                    <td>{{ $booking->user->name }}</td>
-                    <td>{{ $booking->room->name }}</td>
-                    <td>{{ $booking->check_in }}</td>
-                    <td>{{ $booking->status }}</td>
-                </tr>
-                @endforeach
-            </table>
+    {{-- ROOM STATUS --}}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header fw-bold">
+                    Room Status
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        @foreach($roomStatus as $status => $total)
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span class="text-capitalize">{{ str_replace('_',' ', $status) }}</span>
+                            <span class="fw-bold">{{ $total }}</span>
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        {{-- SUMMARY --}}
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header fw-bold">
+                    Summary
+                </div>
+                <div class="card-body">
+                    <p>✔ Pax In House: <b>{{ $paxInHouse }}</b></p>
+                    <p>✔ Pax Arrivals: <b>{{ $paxArrivals }}</b></p>
+                    <p>✔ Pax Departures: <b>{{ $paxDepartures }}</b></p>
+                    <hr>
+                    <p class="fw-bold">End Of Day Pax: {{ $paxEndOfDay }}</p>
+                </div>
+            </div>
         </div>
     </div>
 

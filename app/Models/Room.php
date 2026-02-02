@@ -21,6 +21,15 @@ class Room extends Model
         'available_rooms',
     ];
 
+    // Append a convenient `image` attribute that returns the first image path
+    protected $appends = ['image'];
+
+    public function getImageAttribute()
+    {
+        $first = $this->images()->first();
+        return $first ? $first->image_path : null;
+    }
+
     public function roomType()
     {
         return $this->belongsTo(RoomType::class);

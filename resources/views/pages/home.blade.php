@@ -116,41 +116,39 @@
     </div>
 </div>
 
-<!-- Check availability form -->
+{{-- ================= CHECK AVAILABILITY ================= --}}
 <div class="container availability-form">
     <div class="row">
         <div class="col-lg-12 bg-white shadow p-4 rounded mt-4">
             <h5 class="mb-4">Check Booking Availability</h5>
-            <form action="">
+            <form method="GET" action="{{ route('rooms.index') }}">
                 <div class="row align-items-end">
                     <div class="col-lg-3 mb-3">
-                        <label class="form-label" style="font-weight: 500;">Check-in</label>
-                        <input type="date" class="form-control shadow-none">
+                        <label class="form-label">Check-in</label>
+                        <input type="date" name="check_in" class="form-control shadow-none">
                     </div>
                     <div class="col-lg-3 mb-3">
-                        <label class="form-label" style="font-weight: 500;">Check-out</label>
-                        <input type="date" class="form-control shadow-none">
+                        <label class="form-label">Check-out</label>
+                        <input type="date" name="check_out" class="form-control shadow-none">
                     </div>
                     <div class="col-lg-3 mb-3">
-                        <label class="form-label" style="font-weight: 500;">Adult</label>
-                        <select class="form-select shadow-none">
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                            <option value="4">Four</option>
+                        <label class="form-label">Adults</label>
+                        <select name="adults" class="form-select shadow-none">
+                            @for($i=1;$i<=4;$i++)
+                                <option>{{ $i }}</option>
+                                @endfor
                         </select>
                     </div>
                     <div class="col-lg-2 mb-3">
-                        <label class="form-label" style="font-weight: 500;">Children</label>
-                        <select class="form-select shadow-none">
-                            <option value="0">None</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                        <label class="form-label">Children</label>
+                        <select name="children" class="form-select shadow-none">
+                            @for($i=0;$i<=3;$i++)
+                                <option>{{ $i }}</option>
+                                @endfor
                         </select>
                     </div>
-                    <div class="col-lg-1 mb-lg-3 d-flex align-items-end">
-                        <button type="submit" class="btn text-white shadow-none custom-bg">Check</button>
+                    <div class="col-lg-1 mb-lg-3">
+                        <button class="btn text-white shadow-none custom-bg">Check</button>
                     </div>
                 </div>
             </form>
@@ -161,132 +159,40 @@
 <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">Our Rooms</h2>
 <div class="container">
     <div class="row">
+        @foreach($rooms as $room)
         <div class="col-lg-4 col-md-6 my-3">
-            <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
-                <img src="{{ asset('images/room/1.jpg') }}" class="card-img-top">
+            <div class="card border-0 shadow" style="max-width:350px;margin:auto">
+                <img src="{{ asset('storage/'.$room->image) }}" class="card-img-top">
+
                 <div class="card-body">
-                    <h5>Family Room with Balcony</h5>
-                    <h6 class="mb-4">Price: $100/night</h6>
-                    <div class="features mb-4">
-                        <h6 class="mb-1">Features</h6>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">1 Room</span>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">2 Beds</span>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">1 Bathroom</span>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">1 Balcony</span>
+                    <h5>{{ $room->name }}</h5>
+                    <h6 class="mb-3">Price: {{ number_format($room->price) }} VND / night</h6>
 
+                    <div class="features mb-3">
+                        <span class="badge bg-light text-dark">Capacity: {{ $room->capacity }}</span>
                     </div>
-                    <div class="facilities mb-4">
-                        <h6 class="mb-4">Facilities</h6>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">Wifi</span>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">Television</span>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">AC</span>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">Room heater</span>
-                    </div>
-                    <div class="rating mb-4">
-                        <h6 class="mb-1">Rating</h6>
-                        <span class="badge rounded-pill bg-light">
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <i class="bi bi-star-fill text-warning"></i>
+
+                    <div class="facilities mb-3">
+                        @foreach($room->facilities as $facility)
+                        <span class="badge bg-light text-dark">
+                            {{ $facility->name }}
                         </span>
+                        @endforeach
                     </div>
-                    <div class="d-flex justify-content-evenly mb-2">
-                        <a href="#" class="btn btn-sm text-white shadow-none custom-bg">Book Now</a>
 
-                        <a href="#" class="btn btn-sm btn-outline-dark shadow-none">More Details</a>
-
-
+                    <div class="d-flex justify-content-evenly">
+                        <a href="#" class="btn btn-sm text-white custom-bg">Book Now</a>
+                        <a href="{{ route('rooms.show',$room) }}" class="btn btn-sm btn-outline-dark">More Details</a>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-6 my-3">
-            <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
-                <img src="{{ asset('images/room/2.jpg') }}" class="card-img-top">
-                <div class="card-body">
-                    <h5>Deluxe Double Room</h5>
-                    <h6 class="mb-4">Price: $150/night</h6>
-                    <div class="features mb-4">
-                        <h6 class="mb-1">Features</h6>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">2 Room</span>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">1 Beds</span>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">1 Bathroom</span>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">1 Balcony</span>
+        @endforeach
 
-                    </div>
-                    <div class="facilities mb-4">
-                        <h6 class="mb-4">Facilities</h6>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">Wifi</span>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">Television</span>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">AC</span>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">Room heater</span>
-                    </div>
-                    <div class="rating mb-4">
-                        <h6 class="mb-1">Rating</h6>
-                        <span class="badge rounded-pill bg-light">
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <i class="bi bi-star-fill text-warning"></i>
-
-                        </span>
-                    </div>
-                    <div class="d-flex justify-content-evenly mb-2">
-                        <a href="#" class="btn btn-sm text-white shadow-none custom-bg">Book Now</a>
-
-                        <a href="#" class="btn btn-sm btn-outline-dark shadow-none">More Details</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6 my-3">
-            <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
-                <img src="{{ asset('images/room/3.jpg') }}" class="card-img-top">
-                <div class="card-body">
-                    <h5>Premium Double Room with balcony</h5>
-                    <h6 class="mb-4">Price: $500/night</h6>
-                    <div class="features mb-4">
-                        <h6 class="mb-1">Features</h6>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">2 Room</span>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">1 Beds</span>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">1 Bathroom</span>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">1 Balcony</span>
-
-                    </div>
-                    <div class="facilities mb-4">
-                        <h6 class="mb-4">Facilities</h6>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">Wifi</span>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">Television</span>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">AC</span>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">Room heater</span>
-                    </div>
-                    <div class="rating mb-4">
-                        <h6 class="mb-1">Rating</h6>
-                        <span class="badge rounded-pill bg-light">
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <i class="bi bi-star-fill text-warning"></i>
-                        </span>
-                    </div>
-                    <div class="d-flex justify-content-evenly mb-2">
-                        <a href="#" class="btn btn-sm text-white shadow-none custom-bg">Book Now</a>
-
-                        <a href="#" class="btn btn-sm btn-outline-dark shadow-none">More Details</a>
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-12 text-center mt-5">
-            <a href="#" class="btn btn-sm btn-outline-dark rounded-0 fw-bold shadow-none">More Rooms</a>
+        <div class="col-12 text-center mt-4">
+            <a href="{{ route('rooms.index') }}" class="btn btn-outline-dark fw-bold">More Rooms</a>
         </div>
     </div>
-
 </div>
 <!--Our facilities-->
 <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">Our Facilities</h2>
@@ -356,6 +262,9 @@
             </div>
         </div>
 
+    </div>
+    <div class="col-lg-12 text-center mt-5">
+        <a href="{{ route('offers') }}" class="btn btn-sm btn-outline-dark rounded-0 fw-bold shadow-none">More Offers</a>
     </div>
 
 </div>
