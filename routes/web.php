@@ -36,7 +36,12 @@ Route::middleware(['auth', 'admin'])
         Route::resource('rooms', RoomController::class);
         Route::get('/admin/rooms/{room}', [AdminRoomController::class, 'show'])
             ->name('admin.rooms.show');
-
-        Route::resource('bookings', BookingController::class)->only(['index', 'show', 'update']);
+        Route::resource('bookings', BookingController::class);
+        Route::get('/admin/bookings/{booking}/invoice', [BookingController::class, 'generateInvoice'])
+            ->name('admin.bookings');
+        Route::patch(
+            'bookings/{booking}/status',
+            [BookingController::class, 'updateStatus']
+        )->name('bookings.updateStatus');
         Route::resource('users', UserController::class)->only(['index', 'edit', 'update']);
     });

@@ -42,7 +42,6 @@
     @endif
 
     {{-- FACILITIES --}}
-    {{-- Facilities --}}
     <div class="mb-4">
         <label class="form-label fw-bold">Facilities</label>
 

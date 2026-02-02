@@ -9,12 +9,17 @@ class Booking extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'room_id',
         'user_id',
+        'room_id',
+        'quantity',
         'check_in',
         'check_out',
-        'status',
         'total_price',
+        'status',
+    ];
+    protected $casts = [
+        'check_in'  => 'date',
+        'check_out' => 'date',
     ];
     public function room()
     {
