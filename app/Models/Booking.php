@@ -14,8 +14,11 @@ class Booking extends Model
         'quantity',
         'check_in',
         'check_out',
+        'actual_check_out_date',
         'total_price',
         'status',
+        'payment_status',
+        'refund_amount',
     ];
     protected $casts = [
         'check_in'  => 'date',

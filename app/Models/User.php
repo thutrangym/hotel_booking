@@ -16,7 +16,6 @@ class User extends Authenticatable
         'phone',
         'avatar',
         'address',
-        'pincode',
         'dob',
         'password',
         'role'

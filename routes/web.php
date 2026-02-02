@@ -41,7 +41,8 @@ Route::middleware(['auth', 'admin'])
             ->name('admin.bookings');
         Route::patch(
             'bookings/{booking}/status',
-            [BookingController::class, 'updateStatus']
-        )->name('bookings.updateStatus');
+            [BookingController::class, 'update']
+        )->name('bookings.update');
+
         Route::resource('users', UserController::class)->only(['index', 'edit', 'update']);
     });

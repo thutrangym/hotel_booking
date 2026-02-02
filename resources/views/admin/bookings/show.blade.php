@@ -6,40 +6,123 @@
     <a href="{{ route('admin.bookings.index') }}" class="btn btn-outline-secondary mb-3">
         ← Back to bookings
     </a>
-
+    <h4 class="mb-4">
+        Booking Detail
+    </h4>
     <div class="row g-4">
 
         {{-- BOOKING INFO --}}
         <div class="col-md-6">
-            <div class="card shadow-sm">
-                <div class="card-header fw-bold">Booking Information</div>
+            <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <strong>Booking Information</strong>
+
+                    {{-- Edit button --}}
+                    <a href="{{ route('admin.bookings.edit', $booking) }}"
+                        class="btn btn-sm btn-primary">
+                        Edit
+                    </a>
+                </div>
+
                 <div class="card-body">
-                    <p><strong>ID:</strong> #{{ $booking->id }}</p>
-                    <p>
-                        <strong>Status:</strong>
-                        <span class="badge bg-{{ 
-                            $booking->status === 'confirmed' ? 'success' : 
-                            ($booking->status === 'cancelled' ? 'danger' : 'warning') 
-                        }}">
-                            {{ ucfirst($booking->status) }}
-                        </span>
-                    </p>
-                    <p><strong>Check-in:</strong> {{ $booking->check_in }}</p>
-                    <p><strong>Check-out:</strong> {{ $booking->check_out }}</p>
-                    <p><strong>Quantity:</strong> {{ $booking->quantity }}</p>
-                    <p><strong>Total price:</strong> ${{ $booking->total_price }}</p>
+                    <table class="table table-borderless mb-0">
+                        <tr>
+                            <th width="40%">Booking ID</th>
+                            <td>#{{ $booking->id }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Check-in Date</th>
+                            <td>{{ $booking->check_in }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Check-out Date</th>
+                            <td>{{ $booking->check_out }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Actual Check-out</th>
+                            <td>
+                                {{ $booking->actual_check_out_date ?? '—' }}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>Status</th>
+                            <td>
+                                <span class="badge bg-info text-uppercase">
+                                    {{ $booking->status }}
+                                </span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>Payment Status</th>
+                            <td>
+                                <span class="badge bg-success text-uppercase">
+                                    {{ $booking->payment_status }}
+                                </span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>Total Price</th>
+                            <td>{{ number_format($booking->total_price) }} ₫</td>
+                        </tr>
+
+                        <tr>
+                            <th>Refund Amount</th>
+                            <td>
+                                {{ number_format($booking->refund_amount) }} ₫
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>Created At</th>
+                            <td>{{ $booking->created_at }}</td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
 
         {{-- USER INFO --}}
         <div class="col-md-6">
-            <div class="card shadow-sm">
-                <div class="card-header fw-bold">Customer</div>
+            <div class="card mb-4">
+                <div class="card-header">
+                    <strong>Customer Information</strong>
+                </div>
+
                 <div class="card-body">
-                    <p><strong>Name:</strong> {{ $booking->user->name }}</p>
-                    <p><strong>Email:</strong> {{ $booking->user->email }}</p>
-                    <p><strong>Phone:</strong> {{ $booking->user->phone ?? 'N/A' }}</p>
+                    <table class="table table-borderless mb-0">
+                        <tr>
+                            <th width="40%">Name</th>
+                            <td>{{ $booking->user->name }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Email</th>
+                            <td>{{ $booking->user->email }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Phone</th>
+                            <td>{{ $booking->user->phone ?? '—' }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Role</th>
+                            <td class="text-uppercase">
+                                {{ $booking->user->role }}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>Registered At</th>
+                            <td>{{ $booking->user->created_at }}</td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
