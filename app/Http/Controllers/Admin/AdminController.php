@@ -12,9 +12,11 @@ class AdminController extends Controller
     public function dashboard()
     {
         return view('admin.dashboard', [
-            'roomCount'    => Room::count(),
-            'bookingCount' => Booking::count(),
-            'userCount'    => User::count(),
+            'totalRooms' => Room::count(),
+            'todayBookings' => Booking::whereDate('check_in', today())->count(),
+            'availableRooms' => Room::where('status', 'available')->count(),
+            'totalUsers' => User::count(),
+            'latestBookings' => Booking::latest()->take(5)->get(),
         ]);
     }
 }

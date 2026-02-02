@@ -14,12 +14,13 @@ class Room extends Model
         'name',
         'price',
         'description',
+        'size',
+        'capacity',
+        'status',
         'total_rooms',
         'available_rooms',
-        'status',
-        'facilities',
-        'img',
     ];
+
     public function roomType()
     {
         return $this->belongsTo(RoomType::class);
@@ -27,16 +28,19 @@ class Room extends Model
 
     public function facilities()
     {
-        return $this->belongsToMany(Facility::class, 'room_facility', 'room_id', 'facility_id');
+        return $this->belongsToMany(Facility::class, 'facility_room');
     }
+
     public function images()
     {
         return $this->hasMany(RoomImage::class);
     }
+
     public function bookings(): HasMany
     {
         return $this->hasMany(Booking::class);
     }
+
     public function reviews(): HasMany
     {
         return $this->hasMany(Review::class);

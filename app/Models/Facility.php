@@ -10,8 +10,18 @@ class Facility extends Model
         'name',
         'icon',
     ];
+    protected $appends = ['icon_url'];
+    public function getIconUrlAttribute()
+    {
+        return asset('icons/' . $this->icon);
+    }
     public function rooms()
     {
-        return $this->belongsToMany(Room::class, 'room_facility', 'facility_id', 'room_id');
+        return $this->belongsToMany(
+            Facility::class,
+            'facility_room',
+            'room_id',
+            'facility_id'
+        );
     }
 }

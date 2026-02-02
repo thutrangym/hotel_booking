@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
-use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\RoomController as AdminRoomController;
 use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Admin\BookingController;
 use App\Http\Controllers\Admin\UserController;
@@ -23,6 +23,7 @@ Route::get('/gallery', [PageController::class, 'gallery'])->name('gallery');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 
 // ===== ADMIN =====
+
 Route::middleware(['auth', 'admin'])
     ->prefix('admin')
     ->name('admin.')
@@ -33,6 +34,9 @@ Route::middleware(['auth', 'admin'])
         })->name('dashboard');
 
         Route::resource('rooms', RoomController::class);
+        Route::get('/admin/rooms/{room}', [AdminRoomController::class, 'show'])
+            ->name('admin.rooms.show');
+
         Route::resource('bookings', BookingController::class)->only(['index', 'show', 'update']);
         Route::resource('users', UserController::class)->only(['index', 'edit', 'update']);
     });

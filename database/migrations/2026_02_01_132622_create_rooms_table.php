@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('rooms', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->decimal('price', 10, 2);
+            $table->integer('size')->nullable(); // m2
+            $table->integer('capacity')->nullable(); // số người
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

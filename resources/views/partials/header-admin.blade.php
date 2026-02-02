@@ -1,7 +1,7 @@
 <!-- ======= ADMIN NAVBAR ======= -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-lg-3 py-lg-2 shadow-sm sticky-top">
     <div class="container-fluid">
-        <a class="navbar-brand fw-bold fs-4" href="{{ route('admin.dashboard') }}">
+        <a class="navbar-brand fw-bold fs-4 h-font" href="{{ route('admin.dashboard') }}">
             Sunset Oasis Management
         </a>
 
