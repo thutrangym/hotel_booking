@@ -96,4 +96,14 @@ class PageController extends Controller
     {
         return view('pages.offers');
     }
+    public function roomDetail(Room $room)
+    {
+        $room->load([
+            'images',
+            'facilities',
+            'roomType'
+        ]);
+
+        return view('pages.room-detail', compact('room'));
+    }
 }

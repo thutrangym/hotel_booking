@@ -242,7 +242,19 @@
                 <div class="card-body">
                     <h5 class="card-title">Festive Season</h5>
                     <p class="card-text">Enjoy up to 30% off on selected rooms.</p>
-                    <a href="#" class="btn btn-sm btn-outline-dark rounded-0 shadow-none">Details</a>
+                    @auth
+                    <a href="{{ route('booking.create', $room->id) }}"
+                        class="btn text-white shadow-none custom-bg">
+                        Book Now
+                    </a>
+                    @else
+                    <button
+                        type="button"
+                        class="btn text-white shadow-none custom-bg"
+                        onclick="requireLogin()">
+                        Book Now
+                    </button>
+                    @endauth
                 </div>
             </div>
         </div>
@@ -252,7 +264,19 @@
                 <div class="card-body">
                     <h5 class="card-title">Halfboard Package</h5>
                     <p class="card-text">Perfect for families with kids, this package includes kids' meals, family activities, and a special welcome gift.</p>
-                    <a href="#" class="btn btn-sm btn-outline-dark rounded-0 shadow-none">Details</a>
+                    @auth
+                    <a href="{{ route('booking.create', $room->id) }}"
+                        class="btn text-white shadow-none custom-bg">
+                        Book Now
+                    </a>
+                    @else
+                    <button
+                        type="button"
+                        class="btn text-white shadow-none custom-bg"
+                        onclick="requireLogin()">
+                        Book Now
+                    </button>
+                    @endauth
                 </div>
             </div>
         </div>
@@ -262,7 +286,19 @@
                 <div class="card-body">
                     <h5 class="card-title">Advance Purchase</h5>
                     <p class="card-text">Family-friendly deals with kids stay free.</p>
-                    <a href="#" class="btn btn-sm btn-outline-dark rounded-0 shadow-none">Details</a>
+                    @auth
+                    <a href="{{ route('booking.create', $room->id) }}"
+                        class="btn text-white shadow-none custom-bg">
+                        Book Now
+                    </a>
+                    @else
+                    <button
+                        type="button"
+                        class="btn text-white shadow-none custom-bg"
+                        onclick="requireLogin()">
+                        Book Now
+                    </button>
+                    @endauth
                 </div>
             </div>
         </div>

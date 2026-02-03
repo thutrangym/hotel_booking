@@ -118,7 +118,7 @@
             travelling for short or long-term stay in Hanoi.
         </p>
 
-        <a href="#" class="btn-detail">MORE DETAIL</a>
+        <a href="{{ route('rooms.index') }}" class="btn-detail">MORE DETAIL</a>
     </div>
 
     <div class="apartment-right">
