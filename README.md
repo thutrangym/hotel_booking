@@ -6,33 +6,34 @@ Sunset Oasis is an online hotel booking website that allows users to search, boo
 
 ## 📌 System Features
 
-### 👤 Guest / User
+### 👤 Guest 
 - Check room availability
-- Book hotel rooms
-- Manage bookings  
-  - Modify booking  
-  - Cancel booking  
-- Online payment
-- Give reviews & ratings for booked rooms and services
 - User authentication  
   - Registration  
   - Login / Logout
 - Profile management
 
 ---
-
+### 👤  User
+- Manage bookings  
+  - Modify booking  
+  - Cancel booking  
+- Online payment
+- Give reviews & ratings for booked rooms and services
+- Profile management
+---
 ### 🛠️ Admin
 - Room management (Add / Edit / Delete rooms)
 - User management
 - Booking management  
   - Arrival status tracking  
   - Change check-out date  
-  - Refund on cancellation & early check-out  
+  - (Refund on cancellation & early check-out)  
   - Finalize booking  
-  - Generate invoice
+  - (Generate invoice)
 - Room features & services management  
   - Add / Modify / Delete features & services
-- Review & rating management
+- (Review & rating management)
 
 ---
 
@@ -41,10 +42,10 @@ Sunset Oasis is an online hotel booking website that allows users to search, boo
 ### Frontend
 - HTML5  
 - CSS3  
-- JavaScript (Vanilla JS)
+- JavaScript 
 
 ### Backend
-- PHP  
+- PHP  (Laravel Framework)
 - MySQL
 
 ---
@@ -103,12 +104,14 @@ $conn = mysqli_connect("localhost", "root", "", "sunset_oasis");
 ##  🔐 User Roles
 | Role  | Permissions               |
 | ----- | ------------------------- |
-| Guest | Booking, payment, reviews |
+| Guest | View, check availability rooms  |
+| User | Booking, payment, Edit profile    |
 | Admin | Full system management    |
 ---
 ## 🚀 Future Improvements
 
 - Email notifications for booking and cancellation
+- Develop an early check-in/checkout feature.
 - Advanced room search and filtering
 - Payment gateway integration (VNPay / PayPal)
 - Responsive & mobile-friendly UI
