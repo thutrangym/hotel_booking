@@ -46,7 +46,7 @@
                         </td>
 
                         <td class="py-3 fw-bold text-dark">
-                            ${{ number_format($room->price, 0) }}
+                            {{ number_format($room->price, 0) }} VND
                         </td>
 
                         <td class="py-3">

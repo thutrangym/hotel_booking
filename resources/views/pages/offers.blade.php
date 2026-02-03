@@ -63,21 +63,14 @@
                         <input type="date" name="check_out" class="form-control shadow-none">
                     </div>
                     <div class="col-lg-3 mb-3">
-                        <label class="form-label">Adults</label>
+                        <label class="form-label">Person</label>
                         <select name="adults" class="form-select shadow-none">
                             @for($i=1;$i<=4;$i++)
                                 <option>{{ $i }}</option>
                                 @endfor
                         </select>
                     </div>
-                    <div class="col-lg-2 mb-3">
-                        <label class="form-label">Children</label>
-                        <select name="children" class="form-select shadow-none">
-                            @for($i=0;$i<=3;$i++)
-                                <option>{{ $i }}</option>
-                                @endfor
-                        </select>
-                    </div>
+
                     <div class="col-lg-1 mb-lg-3">
                         <button class="btn text-white shadow-none custom-bg">Check</button>
                     </div>
@@ -88,10 +81,10 @@
 </div>
 {{-- ================= OFFERS ================= --}}
 <div class="offers mt-5 mb-5">
-    <div class="container">
+    <div class="container justify-content-evenly px-lg-0 px-md-0 px-5">
         <div class="row">
             <div class="col-lg-12 text-center mb-4">
-                <h3 class="mb-3">Our Special Offers</h3>
+                <h3 class="mb-3 fw-bold h-font">Our Special Offers</h3>
                 <hr class="mx-auto" style="width: 150px; height: 3px; background-color: #000;">
             </div>
             {{-- Offer Item --}}
@@ -99,9 +92,21 @@
                 <div class="card border-0 shadow">
                     <img src="{{ asset('images/special_offers/1.jpg') }}" class="card-img-top" alt="Offer 1">
                     <div class="card-body">
-                        <h5 class="card-title">Romantic Getaway Package</h5>
-                        <p class="card-text">Enjoy a romantic stay with special amenities including a couples massage, candlelight dinner, and champagne.</p>
-                        <a href="#" class="btn text-white shadow-none custom-bg">Book Now</a>
+                        <h5 class="card-title">Festive Season</h5>
+                        <p class="card-text">Enjoy up to 30% off on selected rooms.</p>
+                        @auth
+                        <a href="{{ route('booking.create', $room->id) }}"
+                            class="btn text-white shadow-none custom-bg">
+                            Book Now
+                        </a>
+                        @else
+                        <button
+                            type="button"
+                            class="btn text-white shadow-none custom-bg"
+                            onclick="requireLogin()">
+                            Book Now
+                        </button>
+                        @endauth
                     </div>
                 </div>
             </div>
@@ -109,9 +114,21 @@
                 <div class="card border-0 shadow">
                     <img src="{{ asset('images/special_offers/2.jpg') }}" class="card-img-top" alt="Offer 2">
                     <div class="card-body">
-                        <h5 class="card-title">Family Fun Package</h5>
+                        <h5 class="card-title">Halfboard Package</h5>
                         <p class="card-text">Perfect for families with kids, this package includes kids' meals, family activities, and a special welcome gift.</p>
-                        <a href="#" class="btn text-white shadow-none custom-bg">Book Now</a>
+                        @auth
+                        <a href="{{ route('booking.create', $room->id) }}"
+                            class="btn text-white shadow-none custom-bg">
+                            Book Now
+                        </a>
+                        @else
+                        <button
+                            type="button"
+                            class="btn text-white shadow-none custom-bg"
+                            onclick="requireLogin()">
+                            Book Now
+                        </button>
+                        @endauth
                     </div>
                 </div>
             </div>
@@ -119,9 +136,21 @@
                 <div class="card border-0 shadow">
                     <img src="{{ asset('images/special_offers/3.jpg') }}" class="card-img-top" alt="Offer 3">
                     <div class="card-body">
-                        <h5 class="card-title">Business Travel Package</h5>
-                        <p class="card-text">Ideal for business travelers, this package includes a dedicated workspace, high-speed internet, and breakfast.</p>
-                        <a href="#" class="btn text-white shadow-none custom-bg">Book Now</a>
+                        <h5 class="card-title">Advance Purchase</h5>
+                        <p class="card-text">Family-friendly deals with kids stay free.</p>
+                        @auth
+                        <a href="{{ route('booking.create', $room->id) }}"
+                            class="btn text-white shadow-none custom-bg">
+                            Book Now
+                        </a>
+                        @else
+                        <button
+                            type="button"
+                            class="btn text-white shadow-none custom-bg"
+                            onclick="requireLogin()">
+                            Book Now
+                        </button>
+                        @endauth
                     </div>
                 </div>
             </div>
@@ -130,3 +159,12 @@
 </div>
 </div>
 @endsection
+<script>
+    function requireLogin() {
+        alert('Please login to book a room.');
+        const loginModal = new bootstrap.Modal(
+            document.getElementById('loginModal')
+        );
+        loginModal.show();
+    }
+</script>

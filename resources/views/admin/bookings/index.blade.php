@@ -64,7 +64,7 @@
                         </td>
 
                         {{-- Total --}}
-                        <td class="fw-black">${{ number_format($booking->total_price, 2) }}</td>
+                        <td class="fw-black">{{ number_format($booking->total_price, 2) }} VND</td>
 
                         {{-- Status --}}
                         <td>

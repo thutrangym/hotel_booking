@@ -42,21 +42,14 @@
                         <input type="date" name="check_out" class="form-control shadow-none">
                     </div>
                     <div class="col-lg-3 mb-3">
-                        <label class="form-label">Adults</label>
+                        <label class="form-label">Person</label>
                         <select name="adults" class="form-select shadow-none">
                             @for($i=1;$i<=4;$i++)
                                 <option>{{ $i }}</option>
                                 @endfor
                         </select>
                     </div>
-                    <div class="col-lg-2 mb-3">
-                        <label class="form-label">Children</label>
-                        <select name="children" class="form-select shadow-none">
-                            @for($i=0;$i<=3;$i++)
-                                <option>{{ $i }}</option>
-                                @endfor
-                        </select>
-                    </div>
+
                     <div class="col-lg-1 mb-lg-3">
                         <button class="btn text-white shadow-none custom-bg">Check</button>
                     </div>

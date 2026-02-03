@@ -18,7 +18,7 @@
     {{-- BASIC INFO --}}
     <div class="card mb-4">
         <div class="card-body">
-            <p><strong>Price:</strong> ${{ $room->price }}</p>
+            <p><strong>Price:</strong> {{ number_format($room->price) }} VND</p>
             <p><strong>Size:</strong> {{ $room->size ?? '—' }} m²</p>
             <p><strong>Capacity:</strong> {{ $room->capacity ?? '—' }} people</p>
             <p><strong>Status:</strong>

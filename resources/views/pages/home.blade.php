@@ -132,21 +132,14 @@
                         <input type="date" name="check_out" class="form-control shadow-none">
                     </div>
                     <div class="col-lg-3 mb-3">
-                        <label class="form-label">Adults</label>
+                        <label class="form-label">Person</label>
                         <select name="adults" class="form-select shadow-none">
                             @for($i=1;$i<=4;$i++)
                                 <option>{{ $i }}</option>
                                 @endfor
                         </select>
                     </div>
-                    <div class="col-lg-2 mb-3">
-                        <label class="form-label">Children</label>
-                        <select name="children" class="form-select shadow-none">
-                            @for($i=0;$i<=3;$i++)
-                                <option>{{ $i }}</option>
-                                @endfor
-                        </select>
-                    </div>
+
                     <div class="col-lg-1 mb-lg-3">
                         <button class="btn text-white shadow-none custom-bg">Check</button>
                     </div>
@@ -181,7 +174,19 @@
                     </div>
 
                     <div class="d-flex justify-content-evenly">
-                        <a href="#" class="btn btn-sm text-white custom-bg">Book Now</a>
+                        @auth
+                        <a href="{{ route('booking.create', $room->id) }}"
+                            class="btn text-white shadow-none custom-bg">
+                            Book Now
+                        </a>
+                        @else
+                        <button
+                            type="button"
+                            class="btn text-white shadow-none custom-bg"
+                            onclick="requireLogin()">
+                            Book Now
+                        </button>
+                        @endauth
                         <a href="{{ route('rooms.show',$room) }}" class="btn btn-sm btn-outline-dark">More Details</a>
                     </div>
                 </div>
@@ -189,8 +194,8 @@
         </div>
         @endforeach
 
-        <div class="col-12 text-center mt-4">
-            <a href="{{ route('rooms.index') }}" class="btn btn-outline-dark fw-bold">More Rooms</a>
+        <div class="col-lg-12 text-center mt-5">
+            <a href="{{ route('rooms.index') }}" class="btn btn-sm btn-outline-dark rounded-0 fw-bold shadow-none">More Rooms</a>
         </div>
     </div>
 </div>
@@ -246,7 +251,7 @@
                 <img src="{{ asset('images/special_offers/2.jpg') }}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Halfboard Package</h5>
-                    <p class="card-text">Special weekend rates for couples.</p>
+                    <p class="card-text">Perfect for families with kids, this package includes kids' meals, family activities, and a special welcome gift.</p>
                     <a href="#" class="btn btn-sm btn-outline-dark rounded-0 shadow-none">Details</a>
                 </div>
             </div>
@@ -325,7 +330,7 @@
 
 @push('scripts')
 <!-- ======= SCRIPTS ======= -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
 <script>
     var swiper = new Swiper(".swiper-container", {
@@ -365,5 +370,14 @@
         },
 
     });
+</script>
+<script>
+    function requireLogin() {
+        alert('Please login to book a room.');
+        const loginModal = new bootstrap.Modal(
+            document.getElementById('loginModal')
+        );
+        loginModal.show();
+    }
 </script>
 @endpush

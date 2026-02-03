@@ -68,13 +68,13 @@
 
                         <tr>
                             <th>Total Price</th>
-                            <td>{{ number_format($booking->total_price) }} ₫</td>
+                            <td>{{ number_format($booking->total_price) }} VND</td>
                         </tr>
 
                         <tr>
                             <th>Refund Amount</th>
                             <td>
-                                {{ number_format($booking->refund_amount) }} ₫
+                                {{ number_format($booking->refund_amount) }} VND
                             </td>
                         </tr>
 
@@ -134,7 +134,7 @@
                 <div class="card-body">
 
                     <h5>{{ $booking->room->name }}</h5>
-                    <p><strong>Price:</strong> ${{ $booking->room->price }} / night</p>
+                    <p><strong>Price:</strong> {{ number_format($booking->room->price) }} VND / night</p>
                     <p><strong>Capacity:</strong> {{ $booking->room->capacity }} persons</p>
 
                     {{-- Facilities --}}

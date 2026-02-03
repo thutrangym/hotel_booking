@@ -8,18 +8,31 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Booking extends Model
 {
     use HasFactory;
+    const STATUS_PENDING = 'pending';
+    const STATUS_CONFIRMED = 'confirmed';
+    const STATUS_COMPLETED = 'completed';
+    const STATUS_CANCELLED = 'cancelled';
+
+    const PAYMENT_UNPAID = 'unpaid';
+    const PAYMENT_PAID = 'paid';
+    const PAYMENT_FAILED = 'failed';
+
     protected $fillable = [
-        'user_id',
         'room_id',
+        'user_id',
         'quantity',
+        'guest_name',
+        'phone',
+        'note',
+        'status',
+        'payment_status',
+        'refund_amount',
         'check_in',
         'check_out',
         'actual_check_out_date',
         'total_price',
-        'status',
-        'payment_status',
-        'refund_amount',
     ];
+
     protected $casts = [
         'check_in'  => 'date',
         'check_out' => 'date',

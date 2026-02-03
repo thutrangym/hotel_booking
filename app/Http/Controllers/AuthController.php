@@ -52,9 +52,13 @@ class AuthController extends Controller
 
         $data['password'] = Hash::make($data['password']);
 
-        User::create($data);
+        $user = User::create($data);
 
-        return back()->with('success', 'Đăng ký thành công! Hãy đăng nhập.');
+        // Auto-login newly registered user
+        Auth::login($user);
+        $request->session()->regenerate();
+
+        return redirect()->route('home')->with('success', 'Welcome! Your account has been created.');
     }
 
     // LOGOUT

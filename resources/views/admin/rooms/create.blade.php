@@ -38,8 +38,8 @@
                                 <div class="col-md-6">
                                     <label class="form-label fw-bold small text-uppercase tracking-wider">Price (per night)</label>
                                     <div class="input-group">
-                                        <span class="input-group-text bg-light border-0">$</span>
                                         <input name="price" type="number" class="form-control bg-light border-0 rounded-end-3" placeholder="0.00">
+                                        <span class="input-group-text bg-light border-0">VND</span>
                                     </div>
                                 </div>
                                 <div class="col-md-6">

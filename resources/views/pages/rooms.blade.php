@@ -62,52 +62,32 @@
     </div>
 </div>
 
-{{-- ================= AVAILABILITY FORM ================= --}}
+{{-- ================= CHECK AVAILABILITY ================= --}}
 <div class="container availability-form">
     <div class="row">
         <div class="col-lg-12 bg-white shadow p-4 rounded mt-4">
             <h5 class="mb-4">Check Booking Availability</h5>
-
             <form method="GET" action="{{ route('rooms.index') }}">
                 <div class="row align-items-end">
                     <div class="col-lg-3 mb-3">
-                        <label class="form-label fw-semibold">Check-in</label>
-                        <input type="date" name="check_in" value="{{ request('check_in') }}"
-                            class="form-control shadow-none">
+                        <label class="form-label">Check-in</label>
+                        <input type="date" name="check_in" class="form-control shadow-none">
                     </div>
-
                     <div class="col-lg-3 mb-3">
-                        <label class="form-label fw-semibold">Check-out</label>
-                        <input type="date" name="check_out" value="{{ request('check_out') }}"
-                            class="form-control shadow-none">
+                        <label class="form-label">Check-out</label>
+                        <input type="date" name="check_out" class="form-control shadow-none">
                     </div>
-
                     <div class="col-lg-3 mb-3">
-                        <label class="form-label fw-semibold">Adult</label>
-                        <select name="adult" class="form-select shadow-none">
+                        <label class="form-label">Person</label>
+                        <select name="adults" class="form-select shadow-none">
                             @for($i=1;$i<=4;$i++)
-                                <option value="{{ $i }}" {{ request('adult')==$i?'selected':'' }}>
-                                {{ $i }}
-                                </option>
+                                <option>{{ $i }}</option>
                                 @endfor
                         </select>
                     </div>
 
-                    <div class="col-lg-2 mb-3">
-                        <label class="form-label fw-semibold">Children</label>
-                        <select name="children" class="form-select shadow-none">
-                            @for($i=0;$i<=3;$i++)
-                                <option value="{{ $i }}" {{ request('children')==$i?'selected':'' }}>
-                                {{ $i==0?'None':$i }}
-                                </option>
-                                @endfor
-                        </select>
-                    </div>
-
-                    <div class="col-lg-1 mb-lg-3 d-flex align-items-end">
-                        <button type="submit" class="btn text-white shadow-none custom-bg w-100">
-                            Check
-                        </button>
+                    <div class="col-lg-1 mb-lg-3">
+                        <button class="btn text-white shadow-none custom-bg">Check</button>
                     </div>
                 </div>
             </form>
@@ -196,12 +176,26 @@
 
                     {{-- ACTION --}}
                     <div class="d-flex justify-content-evenly mb-2">
+
                         @if($room->status === 'available')
+
+                        @auth
+                        {{-- USER: đi tới trang booking --}}
                         <a
-                            href="{{ route('rooms.show', $room) }}"
+                            href="{{ route('booking.create', $room->id) }}"
                             class="btn btn-sm text-white shadow-none custom-bg">
                             Book Now
                         </a>
+                        @else
+                        {{-- GUEST: mở modal login --}}
+                        <button
+                            type="button"
+                            class="btn btn-sm text-white shadow-none custom-bg"
+                            onclick="requireLogin()">
+                            Book Now
+                        </button>
+                        @endauth
+
                         @else
                         <button
                             class="btn btn-sm btn-secondary shadow-none"
@@ -210,12 +204,15 @@
                         </button>
                         @endif
 
+                        {{-- More details vẫn giữ --}}
                         <a
                             href="{{ route('rooms.show', $room) }}"
                             class="btn btn-sm btn-outline-dark shadow-none">
                             More Details
                         </a>
+
                     </div>
+
 
                 </div>
             </div>
@@ -237,3 +234,15 @@
 
 </div>
 @endsection
+
+<script>
+    function requireLogin() {
+        alert('Please login to book a room.');
+
+        const loginModalEl = document.getElementById('loginModal');
+        if (loginModalEl) {
+            const loginModal = new bootstrap.Modal(loginModalEl);
+            loginModal.show();
+        }
+    }
+</script>

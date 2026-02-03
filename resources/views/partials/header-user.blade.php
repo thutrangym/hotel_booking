@@ -24,6 +24,7 @@
 
 
                 </ul>
+                @guest
                 <form class="d-flex">
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-outline-dark shadow-none me-lg-2 me-3" data-bs-toggle="modal" data-bs-target="#loginModal">
@@ -33,6 +34,43 @@
                         Register
                     </button>
                 </form>
+                @endguest
+                @auth
+                <div class="d-flex align-items-center">
+                    <div class="dropdown">
+                        {{-- Thay btn-link bằng btn-borderless hoặc giữ nguyên nhưng thêm cursor pointer --}}
+                        <a class="d-flex align-items-center dropdown-toggle text-decoration-none"
+                            href="#"
+                            role="button"
+                            id="userDropdown"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                            style="cursor: pointer;">
+
+                            <div class="user-avatar me-2">
+                                {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
+                            </div>
+                            <span class="d-none d-lg-inline fw-bold text-dark">{{ Auth::user()->name }}</span>
+                        </a>
+
+                        {{-- Menu --}}
+                        <ul class="dropdown-menu dropdown-menu-end shadow border-0 rounded-4 py-2 mt-3" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item py-2" href="{{ route('profile.edit') }}"><i class="bi bi-person me-2"></i>Profile</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ route('booking.history') }}"><i class="bi bi-clock-history me-2"></i>History</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <a class="dropdown-item py-2 text-danger" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <i class="bi bi-box-arrow-right me-2"></i>Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                @endauth
+
             </div>
         </div>
     </nav>
@@ -118,3 +156,86 @@
         </div>
     </div>
     @endguest
+
+    {{-- Auto-open modals when validation errors exist (login vs register) --}}
+    @if($errors->any())
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // If old('name') exists it came from registration form
+            var modalId = <?php echo json_encode(old('name') ? 'registerModal' : 'loginModal'); ?>;
+            var modal = new bootstrap.Modal(document.getElementById(modalId));
+            modal.show();
+        });
+    </script>
+    a
+    @endif
+
+    <style>
+        /* Nút Profile gốc */
+        .user-profile-btn {
+            transition: all 0.2s ease;
+        }
+
+        .user-profile-btn::after {
+            display: none;
+            /* Ẩn dấu mũi tên dropdown mặc định của Bootstrap */
+        }
+
+        /* Avatar hình tròn chữ */
+        .user-avatar {
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Dropdown Menu hiện đại */
+        .custom-dropdown-menu {
+            min-width: 200px;
+            animation: fadeInSlide 0.2s ease-out;
+        }
+
+        @keyframes fadeInSlide {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .custom-dropdown-menu .dropdown-item {
+            font-weight: 500;
+            color: #495057;
+            padding-left: 1.25rem;
+            padding-right: 1.25rem;
+            transition: all 0.2s;
+        }
+
+        .custom-dropdown-menu .dropdown-item:hover {
+            background-color: #f8f9fa;
+            color: #0d6efd;
+            padding-left: 1.5rem;
+            /* Hiệu ứng dịch chuyển nhẹ khi hover */
+        }
+
+        .custom-dropdown-menu .dropdown-item.text-danger:hover {
+            background-color: #fff5f5;
+            color: #dc3545;
+        }
+
+        .user-name-text {
+            font-size: 0.95rem;
+            letter-spacing: -0.2px;
+        }
+    </style>

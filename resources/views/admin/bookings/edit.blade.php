@@ -93,7 +93,7 @@
             <div class="card-body">
                 <p class="mb-1"><strong>Room:</strong> {{ $booking->room->name }}</p>
                 <p class="mb-1"><strong>Quantity:</strong> {{ $booking->quantity }}</p>
-                <p class="mb-1"><strong>Price:</strong> ${{ $booking->total_price }}</p>
+                <p class="mb-1"><strong>Price:</strong> {{ number_format($booking->total_price) }} VND</p>
                 <p class="mb-1">
                     <strong>Available Rooms:</strong>
                     {{ $booking->room->available_rooms }}
