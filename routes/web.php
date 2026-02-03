@@ -77,7 +77,9 @@ Route::middleware('auth')->group(function () {
 
     // Payment (MOCK)
     Route::get('/payment/{booking}', [PaymentController::class, 'pay'])->name('payment.pay');
-    Route::get('/payment-return', [PaymentController::class, 'return'])->name('payment.return');
+    // Process mock payment (form submission)
+    Route::post('/payment/{booking}', [PaymentController::class, 'process'])->name('user.payment.process');
     Route::post('/payment/retry/{booking}', [PaymentController::class, 'retry'])
         ->name('payment.retry');
+    Route::get('/payment/result/{booking}', [PaymentController::class, 'result'])->name('payment.result');
 });
