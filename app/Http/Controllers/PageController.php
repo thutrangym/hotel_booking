@@ -29,12 +29,11 @@ class PageController extends Controller
     {
         $query = Room::query();
 
-        // Filter by room status (uses `status` column)
+
         if ($request->filled('status')) {
             $query->where('status', $request->status);
         }
 
-        // Filter by capacity (adults + children)
         $pax = intval($request->get('adult', 1)) + intval($request->get('children', 0));
         if ($pax > 0) {
             $query->where('capacity', '>=', $pax);

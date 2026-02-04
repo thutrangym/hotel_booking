@@ -122,7 +122,6 @@
     </div>
 </div>
 
-{{-- Styles giữ nguyên --}}
 <style>
     .fw-black {
         font-weight: 900;

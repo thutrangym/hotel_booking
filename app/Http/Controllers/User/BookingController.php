@@ -10,13 +10,11 @@ use Illuminate\Support\Facades\Auth;
 
 class BookingController extends Controller
 {
-    // Form đặt phòng
     public function create(Room $room)
     {
         return view('user.bookings.create', compact('room'));
     }
 
-    // Lưu booking
     public function store(Request $request)
     {
         $request->validate([
@@ -54,7 +52,6 @@ class BookingController extends Controller
             ->with('success', 'Booking created successfully!');
     }
 
-    // Lịch sử đặt phòng
     public function history()
     {
         $bookings = Booking::where('user_id', Auth::id())

@@ -115,7 +115,6 @@
         color: #0d6efd !important;
     }
 
-    /* Tinh chỉnh table header */
     .table thead th {
         border-top: none;
         letter-spacing: 0.05em;

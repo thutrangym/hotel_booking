@@ -6,10 +6,10 @@
             </div>
             <div class="col-lg-4 p-4">
                 <h5 class="mb-3">Links</h5>
-                <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none">Home</a><br>
-                <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none">About Us</a><br>
-                <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none">Our Rooms</a><br>
-                <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none">Facilities</a><br>
+                <a href="{{ route('home') }}" class="d-inline-block mb-2 text-dark text-decoration-none">Home</a><br>
+                <a href="{{ route('about') }}" class="d-inline-block mb-2 text-dark text-decoration-none">About Us</a><br>
+                <a href="{{ route('rooms') }}" class="d-inline-block mb-2 text-dark text-decoration-none">Our Rooms</a><br>
+                <a href="{{ route('facilities') }}" class="d-inline-block mb-2 text-dark text-decoration-none">Facilities</a><br>
             </div>
             <div class="col-lg-4 p-4">
                 <h5 class="mb-3">Follow Us</h5>

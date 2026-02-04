@@ -19,7 +19,6 @@
                 @csrf
 
                 <div class="row g-4">
-                    {{-- Cột trái: Thông tin chính --}}
                     <div class="col-md-8">
                         <div class="card border-0 shadow-sm rounded-4 p-4 mb-4">
                             <h5 class="fw-bold mb-4 text-primary">General Information</h5>
@@ -75,7 +74,6 @@
                         </div>
                     </div>
 
-                    {{-- Cột phải: Thông số & Hình ảnh --}}
                     <div class="col-md-4">
                         <div class="card border-0 shadow-sm rounded-4 p-4 mb-4">
                             <h5 class="fw-bold mb-4 text-primary">Inventory & Status</h5>

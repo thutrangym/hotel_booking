@@ -54,7 +54,6 @@ class AuthController extends Controller
 
         $user = User::create($data);
 
-        // Auto-login newly registered user
         Auth::login($user);
         $request->session()->regenerate();
 
